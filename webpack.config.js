@@ -16,18 +16,28 @@ module.exports = (env, argv) => {
             },
             {
                 test: /\.s?css$/,
-                use: [MiniCssExtractPlugin.loader,
-                    'css-loader',
-                    'sass-loader'
+                use: [ MiniCssExtractPlugin.loader, 
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            sourceMap: true
+                        }
+                    },
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            sourceMap: true
+                        }
+                    }
                 ],
             }
         ]      // rules là 1 mảng có thể chứa nhiều đối tượng, mỗi đối tượng là 1 bộ lọc, hay 1 nhiệm vụ như trên
         },
-        devtool: isProduction? 'source-map' : 'eval-cheap-source-map',
+        devtool: isProduction ? 'source-map' : 'inline-cheap-module-source-map',
         devServer: {
             contentBase: path.join(__dirname, 'public'),
             compress: true,
-            historyApiFallback: true,
+            historyApiFallback: true, //set file nguon trang index.js xuaat hien o moi link tim kiem
         },
         plugins: [
             new MiniCssExtractPlugin({ 
