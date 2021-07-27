@@ -5,7 +5,7 @@ module.exports = (env, argv) => {
     return {
         entry: './src/app.js',
         output: {
-            path: path.join(__dirname, 'public'),
+            path: path.join(__dirname,'public','dist'),
             filename: 'bundle.js',
         },
         module: {
@@ -38,6 +38,7 @@ module.exports = (env, argv) => {
             contentBase: path.join(__dirname, 'public'),
             compress: true,
             historyApiFallback: true, //set file nguon trang index.js xuaat hien o moi link tim kiem
+            pathPublic: '/dist/',
         },
         plugins: [
             new MiniCssExtractPlugin({ 
