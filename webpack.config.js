@@ -38,7 +38,8 @@ module.exports = (env, argv) => {
             contentBase: path.join(__dirname, 'public'),
             compress: true,
             historyApiFallback: true, //set file nguon trang index.js xuaat hien o moi link tim kiem
-            pathPublic: '/dist/',
+            publicPath: '/dist/',
+
         },
         plugins: [
             new MiniCssExtractPlugin({ 
