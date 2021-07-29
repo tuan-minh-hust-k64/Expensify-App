@@ -6,13 +6,15 @@ const Create = (props) => (
     <div>
         <ExpenseForm
         onSubmitExpense={(expense) => {
-            props.startAddExpenses(expense);
-            props.history.push('/');
+            props.startAddExpenses(expense, props.uid.uid);
+            props.history.push('/home');
         }} />
     </div>
 );
 const mapDispatchToProps = (dispatch) => ({
-    startAddExpenses: (expense) => dispatch(startAddExpenses(expense))
+    startAddExpenses: (expense, uid) => dispatch(startAddExpenses(expense, uid)),
 });
-  
-export default connect(undefined,mapDispatchToProps)(Create);
+const mapStateToProps = (state) => ({
+    uid: state.auth,
+})
+export default connect(mapStateToProps, mapDispatchToProps)(Create);

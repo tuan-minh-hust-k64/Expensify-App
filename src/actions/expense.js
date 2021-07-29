@@ -19,8 +19,7 @@ export const addExpenses = ({
         }
     }
 };
-export const startAddExpenses = (expense) => {
-    
+export const startAddExpenses = (expense, uid) => {
     return (dispatch) => {
         const {
             description = '',
@@ -28,8 +27,9 @@ export const startAddExpenses = (expense) => {
             amount = '',
             createAt = 0,
         }=expense;
+        
         const newExpense = {description, note, amount, createAt};
-        database.ref('expenses').push(newExpense).then((ref) => {
+        database.ref(`user/${uid}/expenses`).push(newExpense).then((ref) => {
             dispatch(addExpenses({id: ref.id, ...newExpense}))
         })
     }
@@ -44,6 +44,13 @@ export const removeExpenses = ({
         }
     }
 }
+export const startRemoveExpenses = ({id}, uid) => {
+    return (dispatch) => {
+        return database.ref(`user/${uid}/expenses/${id}`).remove().then(() => {
+            dispatch(removeExpenses({id}));
+        })
+    }
+}
 export const editExpenses = ({
     id
 } = {}, update) => {
@@ -52,6 +59,13 @@ export const editExpenses = ({
         id,
         update,
     }
+};
+export const startEditExpenses = ({id, uid}, update) => {
+    return (dispatch) => {
+        return database.ref(`user/${uid}/expenses/${id}`).update(update).then(() => {
+            dispatch(editExpenses({id}, update));
+        })
+    }
 }
 export const setExpenses = (expenses) => {
     return {
@@ -59,9 +73,9 @@ export const setExpenses = (expenses) => {
         expenses: expenses,
     }
 };
-export const startSetExpenses = () => {
+export const startSetExpenses = ({uid}) => {
     return (dispatch) => {
-        return database.ref('expenses').once('value').then((snapshot) => {
+        return database.ref(`user/${uid}/expenses`).once('value').then((snapshot) => {
             const newExpenses = [];
             snapshot.forEach((expense) => {
                 newExpenses.push({
@@ -73,3 +87,6 @@ export const startSetExpenses = () => {
         })
     }
 }
+export const resetExpenses = () => ({
+    type: 'RESET_EXPENSES'
+})

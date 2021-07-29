@@ -1,23 +1,26 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Router, Route, Switch } from "react-router-dom";
 import Home from '../components/Home';
 import Create from '../components/Create';
 import Edit from '../components/Edit';
 import Help from '../components/Help';
 import Page404 from '../components/Page404';
 import NavHeader from '../components/NavHeader';
+import PageLogin from '../components/PageLogin';
+import PrivateRoute from './PrivateRoute';
+import { createBrowserHistory } from 'history';
+export const history = createBrowserHistory();
 const Approuter = () => (
-        <BrowserRouter>
+        <Router history={history}>
             <div>
-                <NavHeader />
                 <Switch>
-                    <Route path="/" component={Home} exact/>
-                    <Route path="/create" component={Create} />
-                    <Route path="/help" component={Help} />
-                    <Route path="/edit/:id" component={Edit} />
+                    <Route path="/" component={PageLogin} exact/>
+                    <PrivateRoute path="/home" component={Home} />
+                    <PrivateRoute path="/create" component={Create} />
+                    <PrivateRoute path="/edit/:id" component={Edit} />
                     <Route component={Page404} />
                 </Switch>
             </div>
-        </BrowserRouter>
+        </Router>
 );
 export default Approuter;

@@ -1,7 +1,8 @@
 import React from 'react';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
-import { removeExpenses } from '../actions/expense';
+import { startRemoveExpenses } from '../actions/expense';
+import { connect } from 'react-redux';
 const ExpenseListItem = ({id, ...props}) => {
     return (
         <div>
@@ -13,10 +14,13 @@ const ExpenseListItem = ({id, ...props}) => {
                 <li>CreatAt: {moment(props.createAt).format('MM/D/YYYY')}</li>
             </ul>
             <button onClick={() =>{
-                props.dispatch(removeExpenses({id}))
+                props.dispatch(startRemoveExpenses({id}, props.uid))
             }}>remove</button>
             
         </div>
     )
 };
-export default ExpenseListItem;
+const mapStateToProps = (state) => ({
+    uid: state.auth.uid
+})
+export default connect(mapStateToProps, undefined)(ExpenseListItem);
