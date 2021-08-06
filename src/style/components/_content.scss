@@ -1,0 +1,94 @@
+.video-tiktok{
+    object-fit: cover;
+    height: auto;
+    width: 28rem;
+    border-radius: .5rem;
+}
+.content{
+    padding-top: 9rem;
+    padding-left: 6rem;
+}
+.user-avarta-img-content{
+    width: auto;
+    img{
+        width: 6rem;
+        border-radius:50%;
+    }
+}
+.music-name{
+    padding: 1.5rem 0;
+}
+.user-infor{
+    position: relative;
+}
+.user-name{
+    margin:0 1rem 1 rem 0;
+}
+.user-infor-name{
+    align-items: baseline;
+}
+.content-header{
+    display: flex;
+    justify-content: space-between;
+    padding: 3rem 0;
+    border-bottom: 1px solid $border;
+}
+///video-option-
+.video-option{
+    position: absolute;
+    bottom: 0;
+    left: 30rem;
+    text-align: center;
+}
+.video-option__tym{
+    padding: 1rem 1rem;
+    border-radius: 50%;
+    background-color: #f1f1f2;
+    margin: 1rem 1rem;
+    i{
+        padding: 0;
+        font-size: 2.5rem;
+    }
+    &:hover{
+        background-color: rgb(189, 189, 189);
+    }
+    position: relative;
+}
+.video-option__share:hover .video-option__sub-share{
+    display: flex;
+}
+.video-option__sub-share{
+    position: absolute;
+    left: -3rem;
+    width: 26rem;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    text-align: initial;
+    bottom: 6rem;
+    padding: .5rem 0;
+    border-radius: 1rem;
+    box-shadow: 0px 0px 10px #999;
+    a{
+        &:hover{
+            background-color: rgb(214, 214, 214);
+        }
+        padding: 1.5rem;
+        i{
+            padding: 0 1rem;
+        }
+    }
+    transition: all .3s ease-in-out;
+    display: none;
+}
+.video-option__sub-share::after{
+    content: "";
+    border-style: solid;
+    border-width: 1rem 2rem;
+    border-color: #fff transparent transparent transparent;
+    position: absolute;
+    top: 28.6rem;
+    z-index: 3;
+    width: 0px;
+    left: 3.2rem;
+}

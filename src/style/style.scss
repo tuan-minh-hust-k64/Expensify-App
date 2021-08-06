@@ -1,2 +1,12 @@
-@import './base/_setting.scss';
-@import './base/_base.scss';
+@import './base/setting';
+@import  './base/base';
+
+@import './components/nav-header';
+@import './components/nav-left';
+@import './components/userOffer';
+@import './components/list-user-offer';
+@import './components/discovery';
+@import './components/other-infor';
+@import './components/content';
+@import './components/modal';
+@import './components/loader.scss';

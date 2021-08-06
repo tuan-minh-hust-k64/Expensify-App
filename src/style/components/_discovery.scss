@@ -1,0 +1,11 @@
+.discovery-item{
+    display: flex;
+    padding: .3rem 1rem;
+    border: 1px solid $border;
+    border-radius: 2rem;
+    margin: 1rem 1rem 0 0;
+}
+.list-discovery{
+    display: flex;
+    flex-wrap: wrap;
+}

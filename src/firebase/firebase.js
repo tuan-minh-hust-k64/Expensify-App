@@ -1,13 +1,13 @@
 import firebase from "firebase";
 const firebaseConfig = {
-    apiKey: "AIzaSyARFwVOghgfDUDkzSybwcuf_J6FOZWS4x4",
-    authDomain: "expensify-app-bf4dd.firebaseapp.com",
-    databaseURL: "https://expensify-app-bf4dd-default-rtdb.firebaseio.com",
-    projectId: "expensify-app-bf4dd",
-    storageBucket: "expensify-app-bf4dd.appspot.com",
-    messagingSenderId: "904350941462",
-    appId: "1:904350941462:web:f42bbc0ca7baa000739037",
-    measurementId: "G-DLM51ME271"
+    apiKey: "AIzaSyD4JBJXdxO8uHkIYSB09okqfIawyOxbmx8",
+    authDomain: "tiktok-app-de47d.firebaseapp.com",
+    databaseURL: "https://tiktok-app-de47d-default-rtdb.firebaseio.com",
+    projectId: "tiktok-app-de47d",
+    storageBucket: "tiktok-app-de47d.appspot.com",
+    messagingSenderId: "1045929031526",
+    appId: "1:1045929031526:web:62e6f759fd78f94c597aa7",
+    measurementId: "G-7KVHTTGKPX"
 };
 firebase.initializeApp(firebaseConfig);
 const database = firebase.database();

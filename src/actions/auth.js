@@ -1,5 +1,4 @@
 import { firebase, provider } from '../firebase/firebase';
-import { resetExpenses } from './expense';
 export const login = ({uid}) => {
     return {
         type: 'LOGIN',
@@ -18,8 +17,6 @@ export const logout = () => {
 }
 export const stopLogin = () => {
     return (dispatch) => {
-        return firebase.auth().signOut().then(() => {
-            dispatch(resetExpenses());
-        });
+        return firebase.auth().signOut()
     }
 }
